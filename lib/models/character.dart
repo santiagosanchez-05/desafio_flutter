@@ -3,14 +3,24 @@ class Character {
   final String name;
   final String status;
   final String species;
+  final String gender;
   final String image;
+  final String origin;
+  final String location;
+  final List<String> episodes;
+  final String created;
 
   Character({
     required this.id,
     required this.name,
     required this.status,
     required this.species,
+    required this.gender,
     required this.image,
+    required this.origin,
+    required this.location,
+    required this.episodes,
+    required this.created,
   });
 
   factory Character.fromJson(Map<String, dynamic> json) {
@@ -19,7 +29,12 @@ class Character {
       name: json['name'],
       status: json['status'],
       species: json['species'],
+      gender: json['gender'],
       image: json['image'],
+      origin: json['origin']['name'],
+      location: json['location']['name'],
+      episodes: List<String>.from(json['episode']),
+      created: json['created'],
     );
   }
 }
